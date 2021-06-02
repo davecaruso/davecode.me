@@ -1,0 +1,27 @@
+{
+  "name": "davecode.me",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.2.2",
+    "next-data-hooks": "https://github.com/ricokahler/next-data-hooks/archive/refs/heads/alpha.tar.gz",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "@reverse/debounce": "^1.0.5",
+    "@types/react": "^17.0.9",
+    "@types/yaml": "^1.9.7",
+    "chalk": "^4.1.1",
+    "fs-extra": "^10.0.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-images": "^1.7.0",
+    "typescript": "^4.3.2"
+  }
+}
