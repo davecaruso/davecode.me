@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "next": "10.2.2",
-    "next-data-hooks": "https://github.com/ricokahler/next-data-hooks/archive/refs/heads/alpha.tar.gz",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "yaml": "^1.10.2"
