@@ -1,19 +1,23 @@
 import React from 'react';
-import { readData } from '../../utils/data-provider';
+import { createGSP } from '../../utils/data';
 
 export default function HomePage(data) {
   return <div>
-    <h1>website rewrite 17472</h1>
+    <h1>website rewrite 174272</h1>
     { JSON.stringify(data) }
   </div>
 }
 
-export async function getStaticProps() {
-  return {
-    props: {
-      bio: await readData('misc/bio.mdx'),
-      featured: await readData('misc/featured.yaml'),
-      contact: await readData('misc/contact.yaml'),
-    }
+export const getStaticProps = createGSP(
+  [
+    // 'misc/bio',
+    'misc/featured',
+    'misc/contact',
+  ],
+  ({ featured, contact }) => {
+    return {
+      featured,
+      contact
+    };
   }
-}
+)

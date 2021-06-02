@@ -8,13 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "next": "10.2.2",
+    "node-cache": "^5.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@reverse/debounce": "^1.0.5",
+    "@types/express": "^4.17.12",
     "@types/react": "^17.0.9",
     "@types/yaml": "^1.9.7",
     "chalk": "^4.1.1",
