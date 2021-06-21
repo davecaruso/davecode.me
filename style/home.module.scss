@@ -1,0 +1,56 @@
+@function shadow($size, $prec, $color) {
+    $str: "";
+    $i: 0;
+    @while $i < $size {
+      $i: $i + $prec;
+      @if $i != $prec {
+        $str: $str + ",";
+      }
+      $str: $str + ($i * 1px) + " " + ($i * 1px) + " " + $color;
+    }
+    @return unquote($str);
+}
+
+.root {
+    background-color: #E7F8E9;
+}
+
+.root main {
+    padding: 1rem;
+    padding-top: 3rem;
+    max-width: 520px;
+    margin: auto;
+}
+
+.root p, .root h1 {
+    margin-bottom: 1rem;
+}
+
+.root h1 {
+    line-height: 1.15em;
+    color: #22C646;
+    text-shadow: shadow(3px, 1, #007205);
+
+    @media (max-width: 519px) {
+        font-size: 8.5vw;
+    }
+}
+
+.root a {
+    color: #00A32F;
+    &:hover {
+        text-decoration: underline;
+    }
+    &:active {
+        color: #FF3A32;
+    }
+}
+
+.root ul li {
+    margin-left: 0.5em;
+
+    &:before {
+        content: "-";
+        padding-right: 8px;
+    }
+}
