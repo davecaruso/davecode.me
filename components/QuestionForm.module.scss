@@ -1,0 +1,127 @@
+.root {
+  position: relative;
+
+  textarea, input[type=email] {
+    font-family: monospace;
+    padding: 8px;
+  }
+  textarea, input[type=email], button {
+    background: black;
+    color: white;
+    border: 1px solid white;
+    resize: none;
+    &:focus {
+      outline: none;
+      border: 1px solid #FF5242;
+    }
+    &::placeholder {
+      color: #666;
+    }
+  }
+  button {
+    padding: 4px 8px;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 8px;
+    max-width: 450px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  left: -35px;
+  transition: opacity 150ms 50ms;
+  opacity: 0;
+  pointer-events: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.expanded {
+    opacity: 0.5;
+    pointer-events: all;
+  }
+  &:hover {
+    opacity: 0.75;
+  }
+  &:active {
+    opacity: 1;
+  }
+}
+
+.questionInput {
+  height: 36px;
+  overflow: hidden;
+}
+.questionInput.expanded {
+  height: 100px;
+  resize: vertical;
+}
+.questionInput.expanding {
+  transition: height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.questionInput::placeholder {
+  transition: opacity 100ms linear;
+}
+.questionInput:focus::placeholder {
+  opacity: 0;
+}
+
+.bottomContainer {
+  opacity: 0;
+  pointer-events: none;
+  margin-bottom: 36px;
+  transition: opacity 50ms 0ms cubic-bezier(0.4, 0, 0.2, 1), height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bottomContainer.expanded {
+  transition: opacity 100ms 70ms cubic-bezier(0.4, 0, 0.2, 1), height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.notifyHeader {
+  font-family: "Roboto Slab";
+  font-size: 20px;
+}
+
+.notifyMethod {
+  height: 28px;
+  display: flex;
+  align-items: center;
+
+  input[type=checkbox] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-color: black;
+    border: 1px solid white;
+    &:focus {
+      outline: none;
+      border: 1px solid #FF5242;
+    }
+    // &::placeholder {
+    //   color: #666;
+    // }
+    &:checked::after {
+      display: block;
+      content: " ";
+      width: 17px;
+      height: 14px;
+      background-image: url(./Check.svg);
+      z-index: 100;
+      position: relative
+    }
+  }
+}
+
+.sendContainer {
+  margin-top: 10px;
+}
+
+.waitingForPushNotif {
+  
+}

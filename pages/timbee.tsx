@@ -6,8 +6,6 @@ export default function Home() {
     <div>
       <Head>
         <title>warning</title>
-        <meta name="description" content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits." />
-        <meta name="author" content="dave caruso" />
       </Head>
 
       <main style={{ fontFamily: 'initial', padding: '8px' }}>
