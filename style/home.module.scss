@@ -1,15 +1,4 @@
-@function shadow($size, $prec, $color) {
-    $str: "";
-    $i: 0;
-    @while $i < $size {
-      $i: $i + $prec;
-      @if $i != $prec {
-        $str: $str + ",";
-      }
-      $str: $str + ($i * 1px) + " " + ($i * 1px) + " " + $color;
-    }
-    @return unquote($str);
-}
+@import "./_util.scss";
 
 .root {
     background-color: #E7F8E9;

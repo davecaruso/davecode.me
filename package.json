@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "clsx": "^1.1.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "modern-normalize": "^1.1.0",
