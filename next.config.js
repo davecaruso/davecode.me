@@ -7,5 +7,14 @@ module.exports = {
     });
  
     return config;
+  },
+  async redirects() {
+    return [
+      {
+        source: '/name-painter-invite',
+        destination: 'https://discord.com/oauth2/authorize?client_id=604738745224134675&scope=bot+applications.commands&permissions=268504064',
+        permanent: true,
+      },
+    ]
   }
 };

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CloseSVG from './CloseThick.svg'
 import c from './QuestionForm.module.scss';
 
@@ -22,6 +22,7 @@ export default function QuestionForm() {
   const [height, setHeight] = useState(0);
 
   const [enablePushNotif, setEnablePushNotif] = useState(false);
+  const [pushNotifIsBlocked, setPushNotifIsBlocked] = useState(false);
   const [waitingForPushNotif, setWaitingForPushNotif] = useState(false);
   const [enableMailNotif, setEnableMailNotif] = useState<null | string>(null);
   
@@ -48,18 +49,39 @@ export default function QuestionForm() {
   }
 
   function $clickPushNotify(ev: React.ChangeEvent<HTMLInputElement>) {
+    setPushNotifIsBlocked(false);
+
     if (ev.target.checked) {
       setWaitingForPushNotif(true);
       Notification.requestPermission()
         .then(x => {
           setEnablePushNotif(x === 'granted');
+          setPushNotifIsBlocked(x !== 'granted');
         })
-        .catch(() => setEnablePushNotif(false))
+        .catch(() => {
+          setEnablePushNotif(false);
+          setPushNotifIsBlocked(true);
+        })
         .finally(() => setWaitingForPushNotif(false))
     } else {
       setEnablePushNotif(false);
     }
   }
+
+  useEffect(() => {
+    if (waitingForPushNotif) {
+      const main = document.querySelector('main')!;
+      main.classList.add(c.waitingForPushNotifBlur);
+
+      const overlay = document.createElement('div');
+      overlay.classList.add(c.waitingForPushNotif);
+      document.body.appendChild(overlay);
+      return () => {
+        overlay.remove();
+        main.classList.remove(c.waitingForPushNotifBlur)
+      }
+    }
+  }, [waitingForPushNotif])
 
   return <form className={c.root}>
     <div
@@ -112,14 +134,19 @@ export default function QuestionForm() {
         {/* <input type="email" disabled={!expanded} placeholder="by email" /> */}
         by email
       </label>
-      <label className={c.notifyMethod}>
+      <label className={clsx(c.notifyMethod, c.notifyMethodSecond)}>
         <input
           type="checkbox"
-          className={clsx(waitingForPushNotif && c.waitingForPushNotif)}
           disabled={!expanded || waitingForPushNotif}
           checked={enablePushNotif}
           onChange={$clickPushNotify}
-        /> by push notification.
+        /> {
+          (!pushNotifIsBlocked)
+            ? "by push notification"
+            : <>
+              <del>by push notification</del>&nbsp;&nbsp;<span className={c.permissionDenied}>(permissions denied)</span>
+            </>
+        }
       </label>
       <div className={c.sendContainer}>
         <button type='submit' disabled={!expanded}>SEND</button>
