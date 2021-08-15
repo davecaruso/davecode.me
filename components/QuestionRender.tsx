@@ -42,16 +42,17 @@ export function QuestionRender({ q }: QuestionRenderProps) {
   }
 
   const date = new Date(q.d);
+  const dateEst = new Date(date.getTime() + date.getTimezoneOffset() * 60000 - 4 * 60 * 60 * 1000);
   const dateString = [
-    date.getFullYear().toString(),
+    dateEst.getFullYear().toString(),
     '-',
-    (date.getMonth() + 1).toString(),
+    (dateEst.getMonth() + 1).toString(),
     '-',
-    date.getDate().toString(),
+    dateEst.getDate().toString(),
     ' ',
-    date.getHours().toString(),
+    dateEst.getHours().toString(),
     ':',
-    date.getMinutes().toString(),
+    dateEst.getMinutes().toString(),
   ].map(x => x.match(/[0-9]/) ? x.padStart(2, "0") : x).join('');
 
   return (
