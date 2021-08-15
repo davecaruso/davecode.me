@@ -2,8 +2,7 @@ import clsx from 'clsx';
 import Head from 'next/head';
 import { useCallback, useState } from 'react';
 import BackButton from '../../components/BackButton';
-import QuestionForm from '../../components/QuestionForm';
-import { QuestionRender, QuestionRenderSkeleton } from '../../components/QuestionRender';
+import { QuestionRender } from '../../components/QuestionRender';
 
 import c from '../../style/qa.module.scss';
 import { connectToDatabase } from '../../utils/db';
