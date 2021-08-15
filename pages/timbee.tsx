@@ -29,12 +29,3 @@ export default function Home() {
   )
 }
 
-// export const getStaticProps = createGSP(
-//   [
-//     // 'misc/bio',
-//   ],
-//   ({ }) => {
-//     return {
-//     };
-//   }
-// )

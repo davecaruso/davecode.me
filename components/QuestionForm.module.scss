@@ -1,18 +1,21 @@
 .root {
+  user-select: none;
+
   position: relative;
 
-  textarea, input[type=email] {
+  textarea {
     font-family: monospace;
     padding: 8px;
   }
-  textarea, input[type=email], button {
+  textarea, button {
     background: black;
     color: white;
     border: 1px solid white;
     resize: none;
+    border-radius: 2px;
     &:focus {
       outline: none;
-      border: 1px solid #FF5242;
+      border: 1px solid #FAA719;
     }
     &::placeholder {
       color: #666;
@@ -30,6 +33,15 @@
 
   del {
     color: rgba(255,255,255,0.5)
+  }
+}
+
+.isSubmitLoading {
+  opacity: 0.6;
+
+  // i had issues with disabled=true, so I just added pointer-events: none
+  & button {
+    pointer-events: none;
   }
 }
 
@@ -103,13 +115,10 @@
     margin-right: 10px;
     background-color: black;
     border: 1px solid white;
-    &:focus {
+    &:focus:not(.noCheckboxFocus) {
       outline: none;
-      border: 1px solid #FF5242;
+      border: 1px solid #FAA719;
     }
-    // &::placeholder {
-    //   color: #666;
-    // }
     &:checked::after {
       display: block;
       content: " ";
@@ -133,13 +142,94 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .waitingForPushNotifBlur {
-  filter: blur(1px);
+  filter: blur(1.2px);
 }
 
 .permissionDenied {
   color: #FF3A32;
+}
+
+$emailFormEase: cubic-bezier(0.3, 0, 0, 1);
+$emailFormTime: 250ms;
+
+.emailForm {
+  // transition: background-color 150ms linear;
+  border: 1px solid transparent;
+  padding-right: 18px;
+
+  .content {
+    display: flex;
+    width: 250px;
+    align-items: center;
+    display: flex;
+    height: 2em;
+  
+    transition: transform $emailFormTime $emailFormEase 50ms;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid #FAA719;
+  }
+
+  &.selected {
+    background: black;
+    border: 1px solid white;
+
+    .content {
+      transition: transform $emailFormTime $emailFormEase 0ms;
+
+      transform: translateX(9px);
+    }
+  }
+
+  &.focused {
+    border: 1px solid #FAA719;
+  }
+
+  input[type=email] {
+    font-family: Hack, monospace;
+    color: #FAA719;
+    border: none;
+    border-radius: 0px;
+    height: 100%;
+    padding: 0;
+    background: none;
+    appearance: none;
+
+    &::placeholder {
+      color: #666;
+      font-family: Inter;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.sendFailure {
+  color: #FF3A32;
+}
+
+.successContainer {
+  transform: translateY(-20px);
+  margin-bottom: 150px;
+  .link {
+    color: #FAA719 !important;
+    &:hover {
+      color: #FF3A32 !important;
+    }
+  }
+}
+.sentTitle {
+  font-size: 48px;
+  color: #51D064;
+}
+.emailCode {
+  color: #FAA719;
 }

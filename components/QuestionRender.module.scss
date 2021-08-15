@@ -1,0 +1,44 @@
+.root {
+  margin-bottom: 2em;
+}
+
+.date {
+  font-family: "Roboto Slab";
+  color: #999;
+  margin-bottom: 0.1em;
+  cursor: pointer;
+  display: flex;
+  gap: 0.25em;
+  width: max-content;
+
+  svg {
+    display: none;
+  }
+
+  &:hover {
+    color: #FAA719;
+    fill: #FAA719;
+    svg {
+      display: block;
+    }
+  }
+  &:active {
+    color: #FF3A32;
+    fill: #FF3A32;
+  }
+}
+
+.root .q, .root .a {
+  margin-bottom: 0.25em;
+}
+
+.q {
+  font-family: "Roboto Slab";
+  font-size: 1.15em;
+  color: white;
+  font-weight: 400;
+}
+
+.a {
+  color: #51D064;
+}
