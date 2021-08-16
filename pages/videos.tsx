@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import BackButton from '../components/BackButton';
 
-import c from '../../style/videos.module.scss';
+import c from '../style/videos.module.scss';
 
 export default function Music() {
   return (

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import BackButton from '../components/BackButton';
 // import { createGSP } from '../../utils/data';
 
-import c from '../../style/software.module.scss';
+import c from '../style/software.module.scss';
 
 export default function Music() {
   return (
