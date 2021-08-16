@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 // import { createGSP } from '../../utils/data';
 
 import c from '../style/home.module.scss';
@@ -32,6 +33,8 @@ export default function Home() {
           here's what you can do right now:
         </p>
         <ul>
+          <li><Link href='/q+a'>question & answers</Link></li>
+          <br />
           <li><a href="mailto:dave@davecode.me">email me</a></li>
           <li><a href="https://youtube.com/davecode">videos on youtube</a></li>
           <li><a href="https://github.com/davecaruso">my github</a></li>
