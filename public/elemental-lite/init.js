@@ -118,8 +118,8 @@ function registerBuiltInPack(id, url, defaultEnabled = true) {
 packSavefile.forEach(([id, data]) => addPackToLoad(data, id));
 
 Promise.all([
-  registerBuiltInPack('elemental2', './elements/elemental2.txt'),
-  registerBuiltInPack('base', './elements/base.txt'),
+  registerBuiltInPack('elemental2', 'elemental-lite/elements/elemental2.txt'),
+  registerBuiltInPack('base', 'elemental-lite/elements/base.txt'),
   // ...add more default packs
 ]).then(() => {
   try {
