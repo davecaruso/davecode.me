@@ -4,14 +4,14 @@
   <meta data-game-version='1.7.1'>
   <title>Elemental Lite</title>
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="elemental-lite/style.css">
 </head>
 <body>
   <div id="loading">
     <h1>Loading...</h1>
   </div>
   <div id="actualGame" style='display:none;'>
-    <img class="header" src="header.png" alt="Elemental Lite Title">
+    <img class="header" src="elemental-lite/header.png" alt="Elemental Lite Title">
     <div class='version'></div>
     <div id='elem-count'></div>
     <p id='helper'>
@@ -159,7 +159,7 @@
     </div>
   </div>
   <div id="safeMode" style="display:none">
-    <img class="header" src="header.png" alt="Elemental Lite Title">
+    <img class="header" src="elemental-lite/header.png" alt="Elemental Lite Title">
     <div class='version'></div>
     <div id='safecontent' style='flex-grow:1;margin:auto;margin-top:20px;padding:20px;max-width:800px'>
       <h1 style='text-align:left;color:red;'>Something Went Wrong While Loading</h1>
@@ -210,14 +210,14 @@
       converter = window.showdown && new showdown.Converter();
       document.querySelectorAll('.version').forEach(x => x.innerText = version);
       seq([
-        './dialog.js',
-        './local-storage.js',
-        './game.js',
-        './options.js',
-        './parser.js',
-        './data.js',
-        './drag-upload.js',
-        './init.js',
+        './elemental-lite/dialog.js',
+        './elemental-lite/local-storage.js',
+        './elemental-lite/game.js',
+        './elemental-lite/options.js',
+        './elemental-lite/parser.js',
+        './elemental-lite/data.js',
+        './elemental-lite/drag-upload.js',
+        './elemental-lite/init.js',
       ].map((url) => () => new Promise(done => {
         const tag = document.createElement('script');
         tag.src = url + '?v=' + version;
