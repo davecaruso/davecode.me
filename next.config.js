@@ -16,5 +16,19 @@ module.exports = {
         permanent: true,
       },
     ]
-  }
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Powered-By',
+            value: 'chocolate; https://davecode.me/donate',
+          },
+        ],
+      },
+    ]
+  },
+  // 
 };
