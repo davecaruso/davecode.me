@@ -5,11 +5,11 @@ function disableSelf(ev: React.MouseEvent<HTMLButtonElement>) {
   ev.currentTarget.disabled = true;
 }
 
-export default function Home() {
+export default function ButtonPage() {
   return (
     <div>
       <Head>
-        <title>warning</title>
+        <title>button</title>
       </Head>
 
       {Array(100).fill(0).map((_, i) => (
