@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta data-game-version='1.7.1'>
+  <title>Elemental Lite</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="loading">
+    <h1>Loading...</h1>
+  </div>
+  <div id="actualGame" style='display:none;'>
+    <img class="header" src="header.png" alt="Elemental Lite Title">
+    <div class='version'></div>
+    <div id='elem-count'></div>
+    <p id='helper'>
+      Quite a simple elemental clone. Combine two elements to create new elements.
+    </p>
+
+    <div id="elements">
+      <div data-category='none'></div>
+    </div>
+    <div id="info-pane">
+      <div id="info-elem" class="elem"></div>
+      <div id='info-info'>
+        <h3>Element #<span id='info-id'></span></h3>
+        <li>
+          <span id='info-combo'></span> combinations that create this.
+        </li>
+        <li>
+          This element is used to make <span id='info-uses'></span> elements.
+        </li>
+        <div id='info-comments'>
+        </div>
+      </div>
+    </div>
+    <div id="bottom">
+      <a href='#' id="openOptions">OPTIONS</a>
+      <a href='#' id="openChangelog">CHANGELOG</a>
+      <div style='flex:1'></div>
+      <a href='https://github.com/imdaveead/elemental-lite'>SOURCE</a>
+      <a href='https://discord.gg/X9VyN42'>DISCORD</a>
+      <a id='moreStuff' href='https://davecode.me'>MORE CONTENT</a>
+    </div>
+
+    <div id="options" class="collapsed">
+      <div>
+        <h3>Elemental Lite Options</h3>
+
+        <label>
+          <p>
+            <input type="checkbox" id='dark-mode'> Dark Mode
+          </p>
+        </label>
+        <label>
+          <p>
+            <input type="checkbox" id='show-pack-id'> Show Pack IDs
+          </p>
+        </label>
+        <p>
+          <button id='delete-button'>Delete Savefile</button>
+        </p>
+
+        <h3>Packs</h3>
+        <div id='pack-div'>
+
+        </div>
+        <div id="pack-div-bottom">
+          <button id='pack-add-btn'>Add New</button>
+          <div id='reload-tip' style='display:none'>
+            <button id='btn-reload'>Reload</button>
+            <span>You need to reload the page to apply changes.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="changelog" class="collapsed">
+      <div>
+        <h3>Elemental Lite v1.7.1 (2020-09-15)</h3>
+        <ul>
+          <li>Bug Fix: Element Images didn't scale to the element. Now they do.</li>
+        </ul>
+        <h3>Elemental Lite v1.7 (2019-10-05)</h3>
+        <p>
+          Update to do very complex things with packs.
+        </p>
+        <ul>
+          <li>Feature: Pack Load Order Controls (LoadBefore= and LoadAfter=)</li>
+          <li>Feature: Pack Dependencies (via Import)</li>
+          <li>Feature: Pack IDs (via Id=)</li>
+          <li>Feature: Pack Versions (via Version=)</li>
+          <li>Feature: Pack Update Urls (via UpdateURL=), but this is ignored.</li>
+          <li>Bug Fix: Minor UI Glitch</li>
+        </ul>
+        <h3>Elemental Lite v1.6 (2019-08-14)</h3>
+        <ul>
+          <li>Feature: Category with Image or Custom CSS</li>
+          <li>Feature: Element Disguises</li>
+          <li>Feature: Inline Disguises</li>
+          <li>Feature: Local Categories</li>
+        </ul>
+        <h3>Elemental Lite v1.5 (2019-07-23)</h3>
+        <ul>
+          <li>Feature: A Logo.</li>
+          <li>Feature: Escape Sequences for using special characters.</li>
+          <li>Feature: URL Packs.</li>
+          <li>Bug Fix: Dark Mode Info Panel.</li>
+          <li>Change: Modify load process to make caching work better.</li>
+        </ul>
+        <h3>Elemental Lite v1.4 (2019-07-23)</h3>
+        <ul>
+          <li>Feature: Element Comments / Description.</li>
+          <li>Feature: Disable Packs without removing it.</li>
+          <li>Feature: Edit Packs.</li>
+          <li>Feature: Built in "None" Category.</li>
+          <li>Feature: Element Info (Right Click).</li>
+          <li>Change: Added recipe for Human in base pack.</li>
+          <li>Bug Fix: You can click the text "Dark Mode" to toggle the switch.</li>
+          <li>Bug Fix: When using fancy characters in the color it would fail.</li>
+          <li>Bug Fix: Element Counter actually counts correctly.</li>
+        </ul>
+        <h3>Elemental Lite v1.3 (2019-07-18)</h3>
+        <ul>
+          <li>Feature: Split Combinations.</li>
+          <li>Feature: Wildcard Combinations.</li>
+          <li>Feature: Drag a file to add it.</li>
+          <li>Feature: Parser Errors will tell the line number.</li>
+          <li>Feature: Element Counter.</li>
+          <li>Change: Re-open options when deleting a pack and reloading page.</li>
+          <li>Bug Fix: Really long pack names cannot be removed.</li>
+          <li>Bug Fix: Dialogs cant be opened if they already are open.</li>
+        </ul>
+        <h3>Elemental Lite v1.2 (2019-07-12)</h3>
+        <ul>
+          <li>Major: Make the project use many more files to increase organization.</li>
+          <li>Feature: Element Format Parser.</li>
+          <li>Feature: Add Element Packs in the UI.</li>
+          <li>Change: Added Source Button.</li>
+          <li>Bug Fix: Fix combinations being setup correctly.</li>
+        </ul>
+        <h3>Elemental Lite v1.1 (2019-07-11)</h3>
+        <ul>
+          <li>Feature: Added Changelog.</li>
+          <li>Feature: Element Parser.</li>
+          <li>Feature: Element Categories.</li>
+          <li>Feature: Dark Mode.</li>
+          <li>Change: Make the top area smaller.</li>
+          <li>Bug Fix: Fix multiline element names from displaying incorrectly.</li>
+        </ul>
+        <h3>Elemental Lite v1.0 (2019-07-10)</h3>
+        <ul>
+          <li>A quick and dirty, single file game. Has all the basic mechanics.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="drop-info">
+      <h2>Drop an Element Pack File to Add it.</h2>
+    </div>
+  </div>
+  <div id="safeMode" style="display:none">
+    <img class="header" src="header.png" alt="Elemental Lite Title">
+    <div class='version'></div>
+    <div id='safecontent' style='flex-grow:1;margin:auto;margin-top:20px;padding:20px;max-width:800px'>
+      <h1 style='text-align:left;color:red;'>Something Went Wrong While Loading</h1>
+      <p>
+        Could not load all your element packs, you may need to enable/disable or add/remove some.
+      </p>
+      <pre>
+        <code id='error-info' style='color:red'></code>
+      </pre>
+      <h3>Packs</h3>
+      <div id="errorpackeditor" style='list-style:none'></div>
+    </div>
+  </div>
+  <div id="dialog">
+    <div id="dialog_content">
+      <h2 id="dialog_title"></h2>
+      <div id="dialog_text_content">
+      </div>
+      <div id="dialog_buttons">
+
+      </div>
+    </div>
+  </div>
+
+  <div id="status"></div>
+
+  <script>
+    let converter;
+    const version = 'v' + document.querySelector('[data-game-version]').getAttribute('data-game-version');
+
+    Promise.all([
+      "https://unpkg.com/clipboard-polyfill@2.8.1/build/clipboard-polyfill.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.js",
+      "https://unpkg.com/showdown@1.9.0/dist/showdown.min.js",
+    ].map((url) => {
+      return new Promise((done) => {
+        const tag = document.createElement('script');
+        tag.src = url;
+        tag.onload = done;
+        tag.onerror = () => {
+          console.log('Library failed to load, game may not perform correctly.');
+          done();
+        };
+        document.body.appendChild(tag);
+      });
+    })).then(() => {
+      async function seq(a) {for (let x of a) { await x(); }}
+      converter = window.showdown && new showdown.Converter();
+      document.querySelectorAll('.version').forEach(x => x.innerText = version);
+      seq([
+        './dialog.js',
+        './local-storage.js',
+        './game.js',
+        './options.js',
+        './parser.js',
+        './data.js',
+        './drag-upload.js',
+        './init.js',
+      ].map((url) => () => new Promise(done => {
+        const tag = document.createElement('script');
+        tag.src = url + '?v=' + version;
+        tag.onload = done;
+        document.body.appendChild(tag);
+      })));
+    })
+
+  </script>
+</body>
+</html>
