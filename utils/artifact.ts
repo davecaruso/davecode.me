@@ -1,14 +1,29 @@
-export type AQuestion = AQuestionSimple | AQuestionComplex;
+export type Question = SimpleQuestion | ComplexQuesiton;
 
-export interface AQuestionSimple {
+export interface SimpleQuestion {
   d: Date;
   q: string;
   a: string;
 }
 
-export interface AQuestionComplex {
+export interface ComplexQuesiton {
   d: Date;
-  c: AQuestionParagraph[];
+  c: QuestionParagraph[];
 }
 
-export type AQuestionParagraph = ['q' | 'a', string];
+export type QuestionParagraph = ['q' | 'a', string];
+
+export interface Artifact {
+  id: string;
+  title: string;
+  date: string;
+  type: string;
+  tags?: string[];
+}
+
+export interface MusicArtifact extends Artifact {
+  type: 'music';
+  file: string;
+  /* legacy: for the two songs with the sheet music png */
+  sheetmusic_image?: string;
+}

@@ -1,0 +1,41 @@
+aaaaaaaaa:
+  id: aaaaaaaaa
+  date: 2018-12-14
+  title: aaaaaaaaa
+  type: music
+  tags: [instrumental]
+  file: https://media.davecode.me/content/2018/aaaaaaaaa.mp3
+  sheetmusic_image: https://media.davecode.me/content/2018/aaaaaaaaa.png
+
+semi-good-works:
+  id: semi-good-works
+  date: 2018-12-19
+  title: semi good works
+  type: music
+  tags: [instrumental]
+  file: https://media.davecode.me/content/2018/semi-good-works.mp3
+  sheetmusic_image: https://media.davecode.me/content/2018/semi-good-works.png
+
+mood-lighting:
+  id: mood-lighting
+  date: 2019-07-12
+  title: mood lighting
+  type: music
+  tags: [instrumental, loop]
+  file: https://media.davecode.me/content/2019/mood-lighting.mp3
+
+party-with-the-gang-of-3:
+  id: party-with-the-gang-of-3
+  date: 2020-05-07
+  title: party with the gang of 3
+  type: music
+  tags: [instrumental]
+  file: https://media.davecode.me/content/2020/party-with-the-gang-of-3.mp3
+
+unnamed-1005:
+  id: unnamed-1005
+  date: 2019-07-03
+  title: "unnamed #1005"
+  type: music
+  tags: [instrumental]
+  file: https://media.davecode.me/content/2019/unnamed-1005.mp3

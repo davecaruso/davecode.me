@@ -1,0 +1,64 @@
+.root {
+  margin: 1em 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0.5em;
+  font-size: 1.5em;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5em;
+}
+
+.tag {
+  font-size: 0.8em;
+  background-color: black;
+  border-radius: 4px;
+  color: white;
+  padding: 0 0.25em;
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+}
+
+.date {
+  font-family: "Roboto Slab";
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: -0.3em;
+  // cursor: pointer;
+  display: flex;
+  gap: 0.25em;
+  width: max-content;
+
+  svg {
+    display: none;
+  }
+
+  // &:hover {
+  //   color: #FF3A32;
+  //   fill: #FF3A32;
+  //   svg {
+  //     display: block;
+  //   }
+  // }
+  // &:active {
+  //   color: #C80518;
+  //   fill: #C80518;
+  // }
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

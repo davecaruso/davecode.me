@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { QuestionRender } from '../../components/QuestionRender';
 
 import c from '../../style/qa-respond.module.scss';
-import { AQuestion, AQuestionComplex } from '../../utils/artifact';
+import { Question, ComplexQuesiton } from '../../utils/artifact';
 import { fetcher } from '../../utils/fetcher';
 import { QAGetRequestsResponse, QuestionRequest } from '../api/q+a/get-requests';
 
@@ -13,7 +13,7 @@ interface QuestionFormProps {
   onPop: () => void;
 }
 
-function trimResponse(r: AQuestionComplex): AQuestion {
+function trimResponse(r: ComplexQuesiton): Question {
   if (r.c.length === 2 && r.c[0][0] === 'q' && r.c[1][0] === 'a') {
     return { d: r.d, q: r.c[0][1], a: r.c[1][1] };
   }
@@ -22,7 +22,7 @@ function trimResponse(r: AQuestionComplex): AQuestion {
 
 export function QuestionForm({ q, onPop }: QuestionFormProps) {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<AQuestionComplex>(() => ({ d: new Date(q.d), c: [ ['q', q.q], ['a', '' ] ] }));
+  const [response, setResponse] = useState<ComplexQuesiton>(() => ({ d: new Date(q.d), c: [ ['q', q.q], ['a', '' ] ] }));
   const [i, setI] = useState(0);
 
   function $resetEditor() {

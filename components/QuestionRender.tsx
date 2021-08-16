@@ -1,22 +1,21 @@
 import React from "react";
-import { AQuestion, AQuestionParagraph } from "../utils/artifact";
+import { Question, QuestionParagraph } from "../utils/artifact";
 import c from './QuestionRender.module.scss';
 import { Parser } from 'html-to-react';
 import LinkSVG from './Link.svg';
-import clsx from "clsx";
 
 export interface QuestionRenderProps {
-  q: AQuestion;
+  q: Question;
 }
-export interface QuestionParagraphProps {
-  p: AQuestionParagraph;
+export interface QuestionParagraphRenderProps {
+  p: QuestionParagraph;
 }
 
 const htmlToReactParser = new Parser();
 
 export function QuestionRender({ q }: QuestionRenderProps) {
   const [copy, setCopy] = React.useState(null);
-  const conversation = ('c' in q ? q.c : [['q', q.q], ['a', q.a]]).flatMap(x => x[1].split('\n').map(y => [x[0], y])) as AQuestionParagraph[]
+  const conversation = ('c' in q ? q.c : [['q', q.q], ['a', q.a]]).flatMap(x => x[1].split('\n').map(y => [x[0], y])) as QuestionParagraph[]
   
   async function $copy() {
     const date = new Date(q.d);
@@ -62,14 +61,14 @@ export function QuestionRender({ q }: QuestionRenderProps) {
       </div>
       {
         conversation.map((p, i) => {
-          return <QuestionParagraph key={i} p={p} />
+          return <QuestionParagraphRender key={i} p={p} />
         })
       }
     </div>
   )
 }
 
-export function QuestionParagraph({ p: [who, what] }: QuestionParagraphProps) {
+export function QuestionParagraphRender({ p: [who, what] }: QuestionParagraphRenderProps) {
   let RootElement: any = 'p';
   let props = {};
 

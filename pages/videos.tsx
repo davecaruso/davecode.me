@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import BackButton from '../../components/BackButton';
-// import { createGSP } from '../../utils/data';
+import BackButton from '../components/BackButton';
 
 import c from '../../style/videos.module.scss';
 
@@ -26,12 +25,3 @@ export default function Music() {
   )
 }
 
-// export const getStaticProps = createGSP(
-//   [
-//     // 'misc/bio',
-//   ],
-//   ({ }) => {
-//     return {
-//     };
-//   }
-// )

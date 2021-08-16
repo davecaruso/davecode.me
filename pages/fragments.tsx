@@ -1,37 +1,20 @@
 import Head from 'next/head';
-import BackButton from '../../components/BackButton';
-// import { createGSP } from '../../utils/data';
+import BackButton from '../components/BackButton';
 
-import c from '../../style/software.module.scss';
+import c from '../../style/404.module.scss';
 
 export default function Music() {
   return (
     <div className={c.root}>
       <Head>
-        <title>davecode software</title>
+        <title>davecode fragments</title>
         <meta name="description" content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits." />
         <meta name="author" content="dave caruso" />
       </Head>
 
       <main>
         <BackButton />
-        <h1>
-          software
-        </h1>
-        <p>
-          software
-        </p>
       </main>
     </div>
   )
 }
-
-// export const getStaticProps = createGSP(
-//   [
-//     // 'misc/bio',
-//   ],
-//   ({ }) => {
-//     return {
-//     };
-//   }
-// )
