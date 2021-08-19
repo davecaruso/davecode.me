@@ -4,27 +4,31 @@
 // TODO: plugin to transform $ functions to useCallback.
 
 import clsx from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
-import CloseSVG from './CloseThick.svg'
+import React, { ReactChild, useEffect, useRef, useState } from 'react';
+import CloseSVG from './CloseThick.svg';
 import c from './QuestionForm.module.scss';
-import { FadeLoader } from "react-spinners";
+import { FadeLoader } from 'react-spinners';
 import Link from 'next/link';
 
-function YesNoScript({ yes, no }: any) {
-  return yes;
-  return <>
-    {!process.browser && <noscript>
-      {no}
-    </noscript>}
-    {!process.browser && <noscript dangerouslySetInnerHTML={{ __html: '<!--' }} />}
-    {yes}
-    {!process.browser && <noscript dangerouslySetInnerHTML={{ __html: '-->' }} />}
-  </>
+export interface YesNoScriptProps {
+  yes: ReactChild;
+  no: ReactChild;
+}
+
+export function YesNoScript({ yes, no }: YesNoScriptProps) {
+  return (
+    <>
+      {!process.browser && <noscript>{no}</noscript>}
+      {!process.browser && <noscript dangerouslySetInnerHTML={{ __html: '<!--' }} />}
+      {yes}
+      {!process.browser && <noscript dangerouslySetInnerHTML={{ __html: '-->' }} />}
+    </>
+  );
 }
 
 let nextClickCheckboxIgnore = false;
 
-export default function QuestionForm() {
+export function QuestionForm() {
   const bottomContainerRef = useRef<HTMLDivElement>(null);
   const [expanded, setFormOpen] = useState(false);
   const [expanding, setExpanding] = useState(false);
@@ -38,9 +42,11 @@ export default function QuestionForm() {
   const [emailNotifIsFocused, setEmailNotifIsFocused] = useState(false);
 
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState<false | { date: string; id: string }>(false);
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState<false | { date: string; id: string }>(
+    false
+  );
   const [isSubmitFailure, setIsSubmitFailure] = useState<false | string>(false);
-  
+
   function $focus() {
     setFormOpen(true);
     setExpanding(true);
@@ -55,7 +61,7 @@ export default function QuestionForm() {
 
     if (question.length > 0 && !isSubmitSuccess) {
       const confirm = window.confirm('Discard Question?');
-      if (!confirm) return
+      if (!confirm) return;
     }
 
     setQuestion('');
@@ -104,7 +110,7 @@ export default function QuestionForm() {
     if (ev.target.checked) {
       setWaitingForPushNotif(true);
       Notification.requestPermission()
-        .then(x => {
+        .then((x) => {
           setEnablePushNotif(x === 'granted');
           setPushNotifIsBlocked(x !== 'granted');
         })
@@ -112,7 +118,7 @@ export default function QuestionForm() {
           setEnablePushNotif(false);
           setPushNotifIsBlocked(true);
         })
-        .finally(() => setWaitingForPushNotif(false))
+        .finally(() => setWaitingForPushNotif(false));
     } else {
       setEnablePushNotif(false);
     }
@@ -155,10 +161,10 @@ export default function QuestionForm() {
       return () => {
         clearTimeout(timer);
         overlay.remove();
-        main.classList.remove(c.waitingForPushNotifBlur)
-      }
+        main.classList.remove(c.waitingForPushNotifBlur);
+      };
     }
-  }, [waitingForPushNotif])
+  }, [waitingForPushNotif]);
 
   async function $submit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -179,7 +185,7 @@ export default function QuestionForm() {
         },
         body: JSON.stringify(data),
       });
-  
+
       if (response.status === 200) {
         const { id, date } = await response.json();
         setIsSubmitSuccess({ date, id });
@@ -188,10 +194,10 @@ export default function QuestionForm() {
         console.error(message);
         setIsSubmitFailure(message);
       }
-  
+
       setIsSubmitLoading(false);
     } catch (error) {
-      setIsSubmitFailure("Network Error");
+      setIsSubmitFailure('Network Error');
     }
   }
 
@@ -203,141 +209,163 @@ export default function QuestionForm() {
     setQuestion('');
   }
 
-  const successUrl = isSubmitSuccess ? (()=>{
-    const date = new Date(isSubmitSuccess.date);
-    const dateStr = [
-      date.getFullYear().toString().slice(2),
-      (date.getMonth() + 1).toString(),
-      date.getDate().toString(),
-      date.getHours().toString(),
-      date.getMinutes().toString(),
-      date.getSeconds().toString()
-    ].map(x => x.padStart(2, "0")).join('');
-    return `${window.location.origin}/q+a/${dateStr}`;
-  })() : null;
+  const successUrl = isSubmitSuccess
+    ? (() => {
+        const date = new Date(isSubmitSuccess.date);
+        const dateStr = [
+          date.getFullYear().toString().slice(2),
+          (date.getMonth() + 1).toString(),
+          date.getDate().toString(),
+          date.getHours().toString(),
+          date.getMinutes().toString(),
+          date.getSeconds().toString(),
+        ]
+          .map((x) => x.padStart(2, '0'))
+          .join('');
+        return `${window.location.origin}/q+a/${dateStr}`;
+      })()
+    : null;
 
-  return <form className={clsx({
-    [c.root]: true,
-    [c.isSubmitLoading]: isSubmitLoading,
-  })} onSubmit={$submit}>
-    <div
+  return (
+    <form
       className={clsx({
-        [c.closeBtn]: true,
-        [c.expanded]: expanded && !isSubmitLoading,
+        [c.root]: true,
+        [c.isSubmitLoading]: isSubmitLoading,
       })}
-      onClick={$close}
+      onSubmit={$submit}
     >
-      <CloseSVG />
-    </div>
-    {
-      isSubmitSuccess
-        ? <div ref={bottomContainerRef}
+      <div
         className={clsx({
-          [c.successContainer]: true,
+          [c.closeBtn]: true,
+          [c.expanded]: expanded && !isSubmitLoading,
         })}
-        style={{
-          height: `${height}px`
-        }}>
-            <h2 className={c.sentTitle}>sent!</h2>
-            <p style={{ userSelect: 'text' }}>
-              once answered, it will be available at <Link href={successUrl}><a className={c.link}>{successUrl}</a></Link>.{' '}
-              {
-              enableMailNotif
-                ? enablePushNotif ? <>
-                  you will also be notified via <code className={c.emailCode}>{enableMailNotif}</code> and device push notification
-                </> : <>
-                  you will also be notified via <code className={c.emailCode}>{enableMailNotif}</code>
-                </>
-                : enablePushNotif ? <>
-                  you will also be notified via device push notification
-                </>
-              : null }.
-            </p>
-            <br /><br />
-            <p>
-              <a href='#' onClick={$reset}>do it again?</a>
-            </p>
-          </div>
-        : <>
-        <div className={c.questionContainer}>
-      
-      <YesNoScript
-        no={
-          <textarea
-            className={c.questionInput}
-            placeholder='[enable javascript to ask a question]'
-            disabled
-          />
-        }
-        yes={
-          <textarea
-            id='question'
-            name='question'
-            className={clsx({
-              [c.questionInput]: true,
-              [c.expanded]: expanded,
-              [c.expanding]: expanding
-            })}
-            disabled={isSubmitLoading}
-            onFocus={$focus}
-            placeholder='ask a question...'
-            required
-            value={question}
-            onChange={$handleChange}
-          />
-        }
-      />
-    </div>
-    <div
-      ref={bottomContainerRef}
-      className={clsx({
-        [c.bottomContainer]: true,
-        [c.expanded]: expanded,
-      })}
-      style={{
-        height: `${height}px`
-      }}
-    >
-      <div className={c.notifyHeader}>notify me:</div>
-      <label className={c.notifyMethod} onMouseDown={$mouseDownEmailNotify}>
-        <input
-          type="checkbox"
-          className={clsx({
-            [c.noCheckboxFocus]: enableMailNotif !== null
-          })}
-          disabled={!expanded || isSubmitLoading}
-          onChange={$clickEmailNotify}
-          checked={enableMailNotif !== null}
-        />
+        onClick={$close}
+      >
+        <CloseSVG />
+      </div>
+      {isSubmitSuccess ? (
         <div
+          ref={bottomContainerRef}
           className={clsx({
-            [c.emailForm]: true,
-            [c.selected]: enableMailNotif !== null,
-            [c.focused]: emailNotifIsFocused
+            [c.successContainer]: true,
           })}
+          style={{
+            height: `${height}px`,
+          }}
         >
-          <div className={c.content}>
-            {enableMailNotif !== null ? 'at' : 'by'}&nbsp;
-            
-            {enableMailNotif !== null
-              ? <input
-                id='email-input'
-                type="email"
-                disabled={!expanded}
-                placeholder="email"
-                autoFocus
-                value={enableMailNotif}
-                onChange={$changeEmailNotify}
-                onFocus={$focusEmailNotify}
-                onBlur={$blurEmailNotify}
-                onKeyDown={$keyDownEmailNotify}
-              />
-              : <span>email</span>
-            }
-          </div>
+          <h2 className={c.sentTitle}>sent!</h2>
+          <p style={{ userSelect: 'text' }}>
+            once answered, it will be available at{' '}
+            <Link href={successUrl}>
+              <a className={c.link}>{successUrl}</a>
+            </Link>
+            .{' '}
+            {enableMailNotif ? (
+              enablePushNotif ? (
+                <>
+                  you will also be notified via{' '}
+                  <code className={c.emailCode}>{enableMailNotif}</code> and device push
+                  notification
+                </>
+              ) : (
+                <>
+                  you will also be notified via{' '}
+                  <code className={c.emailCode}>{enableMailNotif}</code>
+                </>
+              )
+            ) : enablePushNotif ? (
+              <>you will also be notified via device push notification</>
+            ) : null}
+            .
+          </p>
+          <br />
+          <br />
+          <p>
+            <a href='#' onClick={$reset}>
+              do it again?
+            </a>
+          </p>
         </div>
-      </label>
-      {/* <label className={clsx(c.notifyMethod, c.notifyMethodSecond)}>
+      ) : (
+        <>
+          <div className={c.questionContainer}>
+            <YesNoScript
+              no={
+                <textarea
+                  className={c.questionInput}
+                  placeholder='[enable javascript to ask a question]'
+                  disabled
+                />
+              }
+              yes={
+                <textarea
+                  id='question'
+                  name='question'
+                  className={clsx({
+                    [c.questionInput]: true,
+                    [c.expanded]: expanded,
+                    [c.expanding]: expanding,
+                  })}
+                  disabled={isSubmitLoading}
+                  onFocus={$focus}
+                  placeholder='ask a question...'
+                  required
+                  value={question}
+                  onChange={$handleChange}
+                />
+              }
+            />
+          </div>
+          <div
+            ref={bottomContainerRef}
+            className={clsx({
+              [c.bottomContainer]: true,
+              [c.expanded]: expanded,
+            })}
+            style={{
+              height: `${height}px`,
+            }}
+          >
+            <div className={c.notifyHeader}>notify me:</div>
+            <label className={c.notifyMethod} onMouseDown={$mouseDownEmailNotify}>
+              <input
+                type='checkbox'
+                className={clsx({
+                  [c.noCheckboxFocus]: enableMailNotif !== null,
+                })}
+                disabled={!expanded || isSubmitLoading}
+                onChange={$clickEmailNotify}
+                checked={enableMailNotif !== null}
+              />
+              <div
+                className={clsx({
+                  [c.emailForm]: true,
+                  [c.selected]: enableMailNotif !== null,
+                  [c.focused]: emailNotifIsFocused,
+                })}
+              >
+                <div className={c.content}>
+                  {enableMailNotif !== null ? 'at' : 'by'}&nbsp;
+                  {enableMailNotif !== null ? (
+                    <input
+                      id='email-input'
+                      type='email'
+                      disabled={!expanded}
+                      placeholder='email'
+                      autoFocus
+                      value={enableMailNotif}
+                      onChange={$changeEmailNotify}
+                      onFocus={$focusEmailNotify}
+                      onBlur={$blurEmailNotify}
+                      onKeyDown={$keyDownEmailNotify}
+                    />
+                  ) : (
+                    <span>email</span>
+                  )}
+                </div>
+              </div>
+            </label>
+            {/* <label className={clsx(c.notifyMethod, c.notifyMethodSecond)}>
         <input
           type="checkbox"
           disabled={!expanded || waitingForPushNotif || isSubmitLoading}
@@ -351,33 +379,37 @@ export default function QuestionForm() {
             </>
         }
       </label> */}
-      <div className={c.sendContainer}>
-        {
-          isSubmitFailure
-            ? <span className={c.sendFailure}>
-              {isSubmitFailure}
-            </span>
-            : <button type='submit' disabled={!expanded || isSubmitLoading}>{
-          isSubmitLoading ? <>
-            <FadeLoader
-              margin={-9}
-              height='5px'
-              radius='50%'
-              width='5px'
-              color={'white'}
-              css={`
-                display: inline-block;
-                width: 25px;
-                height: 10px;
-                transform: translate(6px, 1px);
-              `}
-            />
-            sending question...
-          </> : 'send'
-        }</button>}
-      </div>
-    </div>
+            <div className={c.sendContainer}>
+              {isSubmitFailure ? (
+                <span className={c.sendFailure}>{isSubmitFailure}</span>
+              ) : (
+                <button type='submit' disabled={!expanded || isSubmitLoading}>
+                  {isSubmitLoading ? (
+                    <>
+                      <FadeLoader
+                        margin={-9}
+                        height='5px'
+                        radius='50%'
+                        width='5px'
+                        color={'white'}
+                        css={`
+                          display: inline-block;
+                          width: 25px;
+                          height: 10px;
+                          transform: translate(6px, 1px);
+                        `}
+                      />
+                      sending question...
+                    </>
+                  ) : (
+                    'send'
+                  )}
+                </button>
+              )}
+            </div>
+          </div>
         </>
-    }
-  </form>
+      )}
+    </form>
+  );
 }

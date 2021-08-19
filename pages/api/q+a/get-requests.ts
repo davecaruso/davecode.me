@@ -1,12 +1,12 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
-import { connectToDatabase } from "../../../utils/db";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getSession } from 'next-auth/client';
+import { connectToDatabase } from '../../../utils/db';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({ req })
+  const session = await getSession({ req });
   if (!session) {
     return res.status(401).json({
-      message: "You must be logged in to access this resource"
+      message: 'You must be logged in to access this resource',
     });
   }
 

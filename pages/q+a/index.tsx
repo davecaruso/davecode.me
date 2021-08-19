@@ -15,30 +15,29 @@ export default function QA({ questions }) {
     <div className={c.root}>
       <Head>
         <title>davecode q&a</title>
-        <meta name="description" content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits." />
-        <meta name="author" content="dave caruso" />
+        <meta
+          name='description'
+          content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits."
+        />
+        <meta name='author' content='dave caruso' />
       </Head>
 
       <main>
         <BackButton inverted />
         <h1
           className={clsx(invertTitle && c.invertTitle)}
-          onClick={useCallback(() => setInvertTitle(x => !x), [])}
+          onClick={useCallback(() => setInvertTitle((x) => !x), [])}
         >
           <span className={c.textAnswers}>answers</span>
           <span className={c.textAnd}>&</span>
           <span className={c.textQuestions}>questions</span>
         </h1>
-        <p>
-          i answer anonymous questions you ask, because it's fun.
-        </p>
+        <p>i answer anonymous questions you ask, because it's fun.</p>
         <QuestionForm />
-        <p>
-          and the answers:
-        </p>
+        <p>and the answers:</p>
         <div className={c.questions}>
           {questions.map((q) => {
-            return <QuestionRender key={q.d} q={q} />
+            return <QuestionRender key={q.d} q={q} />;
           })}
           {/* <p>
             i have not implemented multiple pages yet. check back later
@@ -46,7 +45,7 @@ export default function QA({ questions }) {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -55,12 +54,12 @@ export async function getStaticProps() {
 
   return {
     props: {
-      questions: questions.map(x => {
+      questions: questions.map((x) => {
         delete x._id;
-        x.d = x.d instanceof Date ? x.d.getTime() : new Date(x.d).getTime(); 
+        x.d = x.d instanceof Date ? x.d.getTime() : new Date(x.d).getTime();
         return x;
-      })
+      }),
     },
-    revalidate: 60 * 60
+    revalidate: 60 * 60,
   };
 }

@@ -3,7 +3,7 @@
 }
 
 .date {
-  font-family: "Roboto Slab";
+  font-family: 'Roboto Slab';
   color: #999;
   margin-bottom: 0.1em;
   cursor: pointer;
@@ -16,29 +16,30 @@
   }
 
   &:hover {
-    color: #FAA719;
-    fill: #FAA719;
+    color: #faa719;
+    fill: #faa719;
     svg {
       display: block;
     }
   }
   &:active {
-    color: #FF3A32;
-    fill: #FF3A32;
+    color: #ff3a32;
+    fill: #ff3a32;
   }
 }
 
-.root .q, .root .a {
+.root .q,
+.root .a {
   margin-bottom: 0.25em;
 }
 
 .q {
-  font-family: "Roboto Slab";
+  font-family: 'Roboto Slab';
   font-size: 1.15em;
   color: white;
   font-weight: 400;
 }
 
 .a {
-  color: #51D064;
+  color: #51d064;
 }

@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { connectToDatabase } from "../../../utils/db";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { connectToDatabase } from '../../../utils/db';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (!req.body || !req.body.question) {
     return res.status(400).json({
-      message: "Invalid question"
+      message: 'Invalid question',
     });
   }
 
@@ -14,7 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (email) {
     if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
       return res.status(400).json({
-        message: "Invalid email"
+        message: 'Invalid email',
       });
     }
   }
@@ -24,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // check if question is too long
   if (question.length > 8000) {
     return res.status(400).json({
-      message: "Question is too long"
+      message: 'Question is too long',
     });
   }
 
@@ -36,18 +36,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const result = await db.collection('question-requests').insertOne({
     d: date,
     q: question,
-    mail: email
+    mail: email,
   });
 
   // check if question was added
   if (!result.acknowledged) {
     return res.status(500).json({
-      message: "Question was not added"
+      message: 'Question was not added',
     });
   }
 
   res.json({
-    message: "Question submitted",
+    message: 'Question submitted',
     id: result.insertedId,
     date: date,
   });

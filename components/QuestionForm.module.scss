@@ -1,5 +1,6 @@
 .root {
   user-select: none;
+  color: white;
 
   position: relative;
 
@@ -7,7 +8,8 @@
     font-family: monospace;
     padding: 8px;
   }
-  textarea, button {
+  textarea,
+  button {
     background: black;
     color: white;
     border: 1px solid white;
@@ -15,7 +17,7 @@
     border-radius: 2px;
     &:focus {
       outline: none;
-      border: 1px solid #FAA719;
+      border: 1px solid #faa719;
     }
     &::placeholder {
       color: #666;
@@ -24,7 +26,7 @@
   button {
     padding: 4px 8px;
   }
-  
+
   textarea {
     width: 100%;
     padding: 8px;
@@ -32,7 +34,7 @@
   }
 
   del {
-    color: rgba(255,255,255,0.5)
+    color: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -90,16 +92,18 @@
   opacity: 0;
   pointer-events: none;
   margin-bottom: 36px;
-  transition: opacity 50ms 0ms cubic-bezier(0.4, 0, 0.2, 1), height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 50ms 0ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .bottomContainer.expanded {
-  transition: opacity 100ms 70ms cubic-bezier(0.4, 0, 0.2, 1), height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 100ms 70ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 200ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
   pointer-events: all;
 }
 
 .notifyHeader {
-  font-family: "Roboto Slab";
+  font-family: 'Roboto Slab';
   font-size: 20px;
 }
 
@@ -108,7 +112,7 @@
   display: flex;
   align-items: center;
 
-  input[type=checkbox] {
+  input[type='checkbox'] {
     appearance: none;
     width: 16px;
     height: 16px;
@@ -117,16 +121,16 @@
     border: 1px solid white;
     &:focus:not(.noCheckboxFocus) {
       outline: none;
-      border: 1px solid #FAA719;
+      border: 1px solid #faa719;
     }
     &:checked::after {
       display: block;
-      content: " ";
+      content: ' ';
       width: 17px;
       height: 14px;
       background-image: url(./Check.svg);
       z-index: 100;
-      position: relative
+      position: relative;
     }
   }
 }
@@ -150,7 +154,7 @@
 }
 
 .permissionDenied {
-  color: #FF3A32;
+  color: #ff3a32;
 }
 
 $emailFormEase: cubic-bezier(0.3, 0, 0, 1);
@@ -167,13 +171,13 @@ $emailFormTime: 250ms;
     align-items: center;
     display: flex;
     height: 2em;
-  
+
     transition: transform $emailFormTime $emailFormEase 50ms;
   }
 
   &:focus {
     outline: none;
-    border: 1px solid #FAA719;
+    border: 1px solid #faa719;
   }
 
   &.selected {
@@ -188,12 +192,12 @@ $emailFormTime: 250ms;
   }
 
   &.focused {
-    border: 1px solid #FAA719;
+    border: 1px solid #faa719;
   }
 
-  input[type=email] {
+  input[type='email'] {
     font-family: Hack, monospace;
-    color: #FAA719;
+    color: #faa719;
     border: none;
     border-radius: 0px;
     height: 100%;
@@ -213,23 +217,23 @@ $emailFormTime: 250ms;
 }
 
 .sendFailure {
-  color: #FF3A32;
+  color: #ff3a32;
 }
 
 .successContainer {
   transform: translateY(-20px);
   margin-bottom: 150px;
   .link {
-    color: #FAA719 !important;
+    color: #faa719 !important;
     &:hover {
-      color: #FF3A32 !important;
+      color: #ff3a32 !important;
     }
   }
 }
 .sentTitle {
   font-size: 48px;
-  color: #51D064;
+  color: #51d064;
 }
 .emailCode {
-  color: #FAA719;
+  color: #faa719;
 }

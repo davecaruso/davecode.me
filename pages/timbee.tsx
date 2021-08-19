@@ -22,10 +22,10 @@ export default function Home() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no it's not <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your website is far superior, timmy <br /> <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options: <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://timb.ee">back to his masterpiece</a> <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="/">to davecode.me</Link>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='https://timb.ee'>back to his masterpiece</a> <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href='/'>to davecode.me</Link>
       </main>
     </div>
-  )
+  );
 }
-

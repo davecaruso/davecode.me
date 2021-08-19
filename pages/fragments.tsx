@@ -8,13 +8,16 @@ export default function Music() {
     <div className={c.root}>
       <Head>
         <title>davecode fragments</title>
-        <meta name="description" content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits." />
-        <meta name="author" content="dave caruso" />
+        <meta
+          name='description'
+          content="davecode is a creative project by dave caruso to take computer software and it's artistic and automation capabilities to the limits."
+        />
+        <meta name='author' content='dave caruso' />
       </Head>
 
       <main>
         <BackButton />
       </main>
     </div>
-  )
+  );
 }

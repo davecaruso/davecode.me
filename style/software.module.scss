@@ -1,21 +1,22 @@
-@import "./_util.scss";
+@import './_util.scss';
 
 .root {
-    background-color: #4CC5FF;
+  background-color: #4cc5ff;
 }
 
 .root main {
-    padding: 1rem;
-    max-width: 800px;
-    margin: auto;
+  padding: 1rem;
+  max-width: 800px;
+  margin: auto;
 }
 
-.root p, .root h1 {
-    margin-bottom: 1rem;
+.root p,
+.root h1 {
+  margin-bottom: 1rem;
 }
 
 .root h1 {
-    line-height: 1.15em;
-    color: #0079C6;
-    text-shadow: shadow(2px, 1, #043f77);
+  line-height: 1.15em;
+  color: #0079c6;
+  text-shadow: shadow(2px, 1, #043f77);
 }

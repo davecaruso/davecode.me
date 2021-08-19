@@ -1,45 +1,46 @@
-@import "./_util.scss";
+@import './_util.scss';
 
 .root {
-    background-color: #E1E1E1;
+  background-color: #e1e1e1;
 }
 
 .root main {
-    padding: 1rem;
-    padding-top: 3rem;
-    max-width: 600px;
-    margin: auto;
+  padding: 1rem;
+  padding-top: 3rem;
+  max-width: 600px;
+  margin: auto;
 }
 
-.root p, .root h1 {
-    margin-bottom: 1rem;
+.root p,
+.root h1 {
+  margin-bottom: 1rem;
 }
 
 .root h1 {
-    line-height: 1.15em;
-    color: #00B89B;
-    text-shadow: shadow(3px, 1, #005D40);
+  line-height: 1.15em;
+  color: #00b89b;
+  text-shadow: shadow(3px, 1, #005d40);
 
-    @media (max-width: 519px) {
-        font-size: 8.5vw;
-    }
+  @media (max-width: 519px) {
+    font-size: 8.5vw;
+  }
 }
 
 .root a {
-    color: #00A98A;
-    &:hover {
-        text-decoration: underline;
-    }
-    &:active {
-        color: #FF3A32;
-    }
+  color: #00a98a;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    color: #ff3a32;
+  }
 }
 
 .root ul li {
-    margin-left: 0.5em;
+  margin-left: 0.5em;
 
-    &:before {
-        content: "-";
-        padding-right: 8px;
-    }
+  &:before {
+    content: '-';
+    padding-right: 8px;
+  }
 }

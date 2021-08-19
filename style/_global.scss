@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300..700&family=Inter&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css');
 
-#__next, #__next > * {
-    min-height: 100vh;
-    min-width: 100%;
-    position: relative;
-    display: inline-block;
+#__next,
+#__next > * {
+  min-height: 100vh;
+  min-width: 100%;
+  position: relative;
+  display: inline-block;
 }
-
 
 // This is a nearly identical copy of tailwindcss' "preflight" base set of
 // styles. I didn't want to install the actual package to be misleading of using
@@ -16,7 +16,7 @@
 // Source: https://unpkg.com/tailwindcss@2.0.2/dist/base.css
 // Docs: https://tailwindcss.com/docs/preflight
 //
-@import "modern-normalize";
+@import 'modern-normalize';
 
 /**
 * Removes the default spacing and border for appropriate elements.
@@ -35,12 +35,12 @@ hr,
 figure,
 p,
 pre {
-    margin: 0;
+  margin: 0;
 }
 
 button {
-    background-color: transparent;
-    background-image: none;
+  background-color: transparent;
+  background-image: none;
 }
 
 /**
@@ -49,20 +49,20 @@ button {
 */
 
 button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 fieldset {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ol,
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /**
@@ -72,8 +72,9 @@ ul {
 *    to override it to ensure consistency even when using the default theme.
 */
 html {
-    font-family: "Inter", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
-    line-height: 1.5; /* 2 */
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans', 'Segoe UI', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; /* 1 */
+  line-height: 1.5; /* 2 */
 }
 
 /**
@@ -82,8 +83,8 @@ html {
 */
 
 body {
-    font-family: inherit;
-    line-height: inherit;
+  font-family: inherit;
+  line-height: inherit;
 }
 
 /**
@@ -115,10 +116,10 @@ body {
 *,
 ::before,
 ::after {
-    box-sizing: border-box; /* 1 */
-    border-width: 0; /* 2 */
-    border-style: solid; /* 2 */
-    border-color: #e5e7eb; /* 2 */
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
 }
 
 /*
@@ -126,7 +127,7 @@ body {
 */
 
 hr {
-    border-top-width: 1px;
+  border-top-width: 1px;
 }
 
 /**
@@ -140,25 +141,25 @@ hr {
 */
 
 img {
-    border-style: solid;
+  border-style: solid;
 }
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #9ca3af;
+  color: #9ca3af;
 }
 
 button,
-[role="button"] {
-    cursor: pointer;
+[role='button'] {
+  cursor: pointer;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 h1,
@@ -167,13 +168,21 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
 }
 
-h1 { font-size: 3em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.5em; }
-h4 { font-size: 1.25em; }
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 1.25em;
+}
 
 /**
 * Reset links to optimize for opt-in styling instead of
@@ -181,8 +190,8 @@ h4 { font-size: 1.25em; }
 */
 
 a {
-    color: inherit;
-    text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 /**
@@ -198,9 +207,9 @@ input,
 optgroup,
 select,
 textarea {
-    padding: 0;
-    line-height: inherit;
-    color: inherit;
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
 }
 
 /**
@@ -214,7 +223,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: Hack, monospace;
+  font-family: Hack, monospace;
 }
 
 /**
@@ -233,8 +242,8 @@ audio,
 iframe,
 embed,
 object {
-    display: block;
-    vertical-align: middle;
+  display: block;
+  vertical-align: middle;
 }
 
 /**
@@ -246,6 +255,6 @@ object {
 
 img,
 video {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }

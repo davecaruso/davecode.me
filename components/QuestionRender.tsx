@@ -1,5 +1,5 @@
-import React from "react";
-import { Question, QuestionParagraph } from "../utils/artifact";
+import React from 'react';
+import { Question, QuestionParagraph } from '../utils/artifact';
 import c from './QuestionRender.module.scss';
 import { Parser } from 'html-to-react';
 import LinkSVG from './Link.svg';
@@ -15,8 +15,15 @@ const htmlToReactParser = new Parser();
 
 export function QuestionRender({ q }: QuestionRenderProps) {
   const [copy, setCopy] = React.useState(null);
-  const conversation = ('c' in q ? q.c : [['q', q.q], ['a', q.a]]).flatMap(x => x[1].split('\n').map(y => [x[0], y])) as QuestionParagraph[]
-  
+  const conversation = (
+    'c' in q
+      ? q.c
+      : [
+          ['q', q.q],
+          ['a', q.a],
+        ]
+  ).flatMap((x) => x[1].split('\n').map((y) => [x[0], y])) as QuestionParagraph[];
+
   async function $copy() {
     const date = new Date(q.d);
     const dateStr = [
@@ -25,8 +32,10 @@ export function QuestionRender({ q }: QuestionRenderProps) {
       date.getDate().toString(),
       date.getHours().toString(),
       date.getMinutes().toString(),
-      date.getSeconds().toString()
-    ].map(x => x.padStart(2, "0")).join('');
+      date.getSeconds().toString(),
+    ]
+      .map((x) => x.padStart(2, '0'))
+      .join('');
     const url = `${window.location.origin}/q+a/${dateStr}`;
 
     try {
@@ -52,31 +61,43 @@ export function QuestionRender({ q }: QuestionRenderProps) {
     dateEst.getHours().toString(),
     ':',
     dateEst.getMinutes().toString(),
-  ].map(x => x.match(/[0-9]/) ? x.padStart(2, "0") : x).join('');
+  ]
+    .map((x) => (x.match(/[0-9]/) ? x.padStart(2, '0') : x))
+    .join('');
 
   return (
     <div className={c.root}>
       <div className={c.date} onClick={$copy}>
-        {copy === true ? <>Copied Link <LinkSVG /></> : copy === false ? <>Failed to copy... <LinkSVG /></> : <>{dateString} <LinkSVG /></>}
+        {copy === true ? (
+          <>
+            Copied Link <LinkSVG />
+          </>
+        ) : copy === false ? (
+          <>
+            Failed to copy... <LinkSVG />
+          </>
+        ) : (
+          <>
+            {dateString} <LinkSVG />
+          </>
+        )}
       </div>
-      {
-        conversation.map((p, i) => {
-          return <QuestionParagraphRender key={i} p={p} />
-        })
-      }
+      {conversation.map((p, i) => {
+        return <QuestionParagraphRender key={i} p={p} />;
+      })}
     </div>
-  )
+  );
 }
 
 export function QuestionParagraphRender({ p: [who, what] }: QuestionParagraphRenderProps) {
-  let RootElement: any = 'p';
+  let RootElement = 'p';
   let props = {};
 
   if (what.startsWith('RootElement=')) {
     RootElement = /RootElement=(.*?)\{/.exec(what)[1];
     let depth = 1;
     let jsonString;
-    for(let i = 13 + RootElement.length; i < what.length; i++) {
+    for (let i = 13 + RootElement.length; i < what.length; i++) {
       if (what[i] === '}') {
         depth--;
         if (depth === 0) {

@@ -1,5 +1,5 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
 
 export default NextAuth({
   providers: [
@@ -10,15 +10,15 @@ export default NextAuth({
     Providers.Credentials({
       name: 'the magic word',
       credentials: {
-        password: { label: "Magic Word", type: "password" }
+        password: { label: 'Magic Word', type: 'password' },
       },
       async authorize(credentials, req) {
         if (credentials.password === 'pasta') {
           return { id: 1, name: 'dave', email: 'dave@davecode.me' };
         } else {
-          return null
+          return null;
         }
-      }
-    })
+      },
+    }),
   ],
 });

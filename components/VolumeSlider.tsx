@@ -4,9 +4,5 @@ export interface VolumeSliderProps {
 }
 
 export function VolumeSlider({ onChange, value }: VolumeSliderProps) {
-  return (
-    <div className="VolumeSlider">
-      cool volume slider
-    </div>
-  );
+  return <div className='VolumeSlider'>cool volume slider</div>;
 }

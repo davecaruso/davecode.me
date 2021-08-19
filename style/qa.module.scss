@@ -1,4 +1,4 @@
-@import "./_util.scss";
+@import './_util.scss';
 
 .root {
   background-color: #101010;
@@ -10,7 +10,8 @@
     margin: auto;
   }
 
-  p, h1 {
+  p,
+  h1 {
     margin-bottom: 1rem;
   }
 
@@ -24,24 +25,25 @@
     }
   }
 
-  p a, .questions a {
-    color: #22C6AD;
+  p a,
+  .questions a {
+    color: #22c6ad;
     &:hover {
       text-decoration: underline;
     }
     &:active {
-      color: #E089C8;
+      color: #e089c8;
     }
   }
 }
 
 .textAnswers {
-  color: #FF3A32;
+  color: #ff3a32;
   text-shadow: shadow(2px, 1, #8f1004);
 }
 
 .textAnd {
-  color: #F7F7F7;
+  color: #f7f7f7;
   text-shadow: shadow(2px, 1, #888888);
   margin: 0 5px;
   z-index: 10;
@@ -49,7 +51,7 @@
 }
 
 .textQuestions {
-  color: #FAA719;
+  color: #faa719;
   text-shadow: shadow(2px, 1, #7a471a);
 }
 

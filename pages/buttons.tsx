@@ -12,15 +12,22 @@ export default function ButtonPage() {
         <title>button</title>
       </Head>
 
-      {Array(100).fill(0).map((_, i) => (
-        <section key={i}>
-          {Array(100).fill(0).map((_, i) => (
-            <button onClick={disableSelf} key={i}>button</button>
-          ))}
-        </section>
-      ))}
+      {Array(100)
+        .fill(0)
+        .map((_, i) => (
+          <section key={i}>
+            {Array(100)
+              .fill(0)
+              .map((_, i) => (
+                <button onClick={disableSelf} key={i}>
+                  button
+                </button>
+              ))}
+          </section>
+        ))}
 
-      <style>{`
+      <style>
+        {`
         section {
           white-space: nowrap;
         }
@@ -64,6 +71,5 @@ export default function ButtonPage() {
         `}
       </style>
     </div>
-  )
+  );
 }
-
