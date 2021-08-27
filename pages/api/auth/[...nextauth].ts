@@ -13,7 +13,7 @@ export default NextAuth({
         password: { label: 'Magic Word', type: 'password' },
       },
       async authorize(credentials, req) {
-        if (credentials.password === 'pasta') {
+        if (credentials.password === process.env.MAGIC_WORD) {
           return { id: 1, name: 'dave', email: 'dave@davecode.me' };
         } else {
           return null;
