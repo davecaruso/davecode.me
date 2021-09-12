@@ -17,6 +17,11 @@ module.exports = {
           'https://discord.com/oauth2/authorize?client_id=604738745224134675&scope=bot+applications.commands&permissions=268504064',
         permanent: true,
       },
+      {
+        source: '/other/:path*',
+        destination: 'https://cdn.davecode.me/other/:path*',
+        permanent: true,
+      },
     ];
   },
   async headers() {
