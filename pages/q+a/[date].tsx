@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Head from 'next/head';
 import { useCallback, useState } from 'react';
-import BackButton from '../../components/BackButton';
+import { BackButton } from '../../components/BackButton';
 import { QuestionRender } from '../../components/QuestionRender';
 
 import c from '../../style/qa.module.scss';

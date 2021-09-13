@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import BackButton from '../components/BackButton';
+import { BackButton } from '../components/BackButton';
 // import { createGSP } from '../../utils/data';
 
 import c from '../style/software.module.scss';

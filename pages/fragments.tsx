@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import BackButton from '../components/BackButton';
+import { BackButton } from '../components/BackButton';
 
 import c from '../style/404.module.scss';
 

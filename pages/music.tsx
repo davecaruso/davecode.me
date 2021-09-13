@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import BackButton from '../components/BackButton';
+import { BackButton } from '../components/BackButton';
 import { MusicPlayer } from '../components/MusicPlayer';
 
 import c from '../style/music.module.scss';
