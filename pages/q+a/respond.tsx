@@ -233,7 +233,7 @@ export default function QARespond() {
   );
 }
 
-class ErrorBoundary extends Component<{}, { hasError: boolean; error: any }> {
+class ErrorBoundary extends Component<unknown, { hasError: boolean; error: Error }> {
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: null };
